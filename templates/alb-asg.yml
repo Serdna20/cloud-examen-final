@@ -63,6 +63,8 @@ Resources:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
 
+      AutoScalingGroupName: ASG-Andrea-Andres
+
       MinSize: '1'
       MaxSize: '3'
       DesiredCapacity: '1'
