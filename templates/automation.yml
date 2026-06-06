@@ -6,28 +6,28 @@ Resources:
   ScaleUpMorning:
     Type: AWS::AutoScaling::ScheduledAction
     Properties:
-      AutoScalingGroupName: ALB-ASG-Andrea-Andres
+      AutoScalingGroupName: ASG-Andrea-Andres
       DesiredCapacity: 2
       Recurrence: "0 8 * * *"
 
   ScaleUpNoon:
     Type: AWS::AutoScaling::ScheduledAction
     Properties:
-      AutoScalingGroupName: ALB-ASG-Andrea-Andres
+      AutoScalingGroupName: ASG-Andrea-Andres
       DesiredCapacity: 3
       Recurrence: "0 12 * * *"
 
   ScaleDownEvening:
     Type: AWS::AutoScaling::ScheduledAction
     Properties:
-      AutoScalingGroupName: ALB-ASG-Andrea-Andres
+      AutoScalingGroupName: ASG-Andrea-Andres
       DesiredCapacity: 2
       Recurrence: "0 18 * * *"
 
   ScaleDownNight:
     Type: AWS::AutoScaling::ScheduledAction
     Properties:
-      AutoScalingGroupName: ALB-ASG-Andrea-Andres
+      AutoScalingGroupName: ASG-Andrea-Andres
       DesiredCapacity: 1
       Recurrence: "0 22 * * *"
 
