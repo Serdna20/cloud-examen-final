@@ -8,7 +8,7 @@ Resources:
     Properties:
       GroupDescription: Security Group EC2
       GroupName: SecurityGroups-EC2-Andrea-Andres
-      VpcId: !Sub '{{resolve:ssm:/aws/service/global-infrastructure/regions/${AWS::Region}/vpc-05777cf4d0d1b1c0f}}'
+      VpcId: vpc-05777cf4d0d1b1c0f
       SecurityGroupIngress:
         - IpProtocol: -1
           CidrIp: 0.0.0.0/0
@@ -22,7 +22,7 @@ Resources:
     Properties:
       GroupDescription: Security Group ALB
       GroupName: SecurityGroups-ALB-Andrea-Andres
-      VpcId: !Sub '{{resolve:ssm:/aws/service/global-infrastructure/regions/${AWS::Region}/vpc-05777cf4d0d1b1c0f}}'
+      VpcId: vpc-05777cf4d0d1b1c0f
       SecurityGroupIngress:
         - IpProtocol: -1
           CidrIp: 0.0.0.0/0
