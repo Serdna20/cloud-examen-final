@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: EC2 Stack Andrea-Andres
+
+Resources:
+
+  WebServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0cca150d127c2216f
+
+      SecurityGroupIds:
+        - !ImportValue EC2SecurityGroupId
+
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          yum update -y
+          yum install httpd -y
+          systemctl start httpd
+          systemctl enable httpd
+          echo "<h1>Andrea y Andres Cloud Computing Final</h1>" > /var/www/html/index.html
+
+      Tags:
+        - Key: Name
+          Value: EC2-Andrea-Andres
+
+  ElasticIP:
+    Type: AWS::EC2::EIP
+
+  EIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      InstanceId: !Ref WebServer
+      AllocationId: !GetAtt ElasticIP.AllocationId
+
+Outputs:
+
+  PublicIP:
+    Value: !Ref ElasticIP
+
+  InstanceId:
+    Value: !Ref WebServer
