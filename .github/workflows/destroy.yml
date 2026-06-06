@@ -1,0 +1,33 @@
+name: Destroy
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  Destroy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v4
+
+    - name: Configure AWS
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        aws-region: us-east-1
+
+    - name: Delete Automation
+      run: aws cloudformation delete-stack --stack-name Automation-Andrea-Andres
+
+    - name: Delete ALB-ASG
+      run: aws cloudformation delete-stack --stack-name ALB-ASG-Andrea-Andres
+
+    - name: Delete EC2
+      run: aws cloudformation delete-stack --stack-name EC2-Andrea-Andres
+
+    - name: Delete Security
+      run: aws cloudformation delete-stack --stack-name Security-Andrea-Andres
